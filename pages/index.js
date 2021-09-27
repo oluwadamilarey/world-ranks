@@ -8,7 +8,7 @@ import CountriesTable from "../components/CountriesTable/CountriesTable";
 export default function Home({ countries }) {
   return (
     <Layout>
-      <div className={styles.length}>Found {countries.length} countries</div>
+      <div className={styles.counts}>Found {countries.length} countries</div>
       <SearchInput placeholder="filter by name, region or subregion" />
       <CountriesTable countries={countries} />
     </Layout>
