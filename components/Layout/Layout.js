@@ -24,9 +24,11 @@ const Layout = ({ children }) => {
           />
         </svg>
       </header>
-      <main className={styles.main}>main</main>
+      <main className={styles.main}>{children}</main>
 
-      <footer className={styles.footer}>footer</footer>
+      <footer className={styles.footer}>
+        Abimbola David @ oluwadamilrey.io
+      </footer>
     </div>
   );
 };
