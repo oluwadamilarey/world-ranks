@@ -6,18 +6,16 @@ import { useState } from "react";
 
 import styles from "./CountriesTable.module.css";
 
-const orderBy = (countries, direction) => {
+const orderBy = (countries, direction, value) => {
   if (direction === "asc") {
-    return [...countries].sort((a, b) =>
-      a.callingCodes > b.callingCodes ? 1 : -1
-    );
+    return [...countries].sort((a, b) => (a[value] > b[value] ? 1 : -1));
   }
 
   if (direction === "desc") {
-    return [...countries].sort((a, b) =>
-      a.callingCodes > b.callingCodes ? -1 : 1
-    );
+    return [...countries].sort((a, b) => (a[value] > b[value] ? -1 : 1));
   }
+
+  return countries;
 };
 
 const SortArrow = ({ direction }) => {
@@ -43,17 +41,39 @@ const SortArrow = ({ direction }) => {
 const CountriesTable = ({ countries }) => {
   const [direction, setDirection] = useState();
   const [value, setvalue] = useState();
-  const orderedCountries = orderBy(countries, "desc");
+  const orderedCountries = orderBy(countries, value, direction);
+
+  const switchDirection = () => {
+    if (!direction) {
+      setDirection("desc");
+    } else if (direction === "desc") {
+      setDirection("asc");
+    } else {
+      setDirection(null);
+    }
+  };
+
+  const setValueAndDrection = (value) => {
+    switchDirection();
+    setvalue(value);
+  };
+
   return (
     <div>
       <div className={styles.heading}>
-        <button className={styles.heading_name}>
+        <button
+          className={styles.heading_name}
+          onClick={() => setValueAndDrection("name")}
+        >
           <div>Name</div>
           <SortArrow />
         </button>
-        <button className={styles.heading_population}>
-          <div>Callng Code</div>
-          <SortArrow direction="asc" />
+        <button
+          className={styles.heading_population}
+          onClick={() => setValueAndDrection("callingCode")}
+        >
+          <div>Calling Code</div>
+          <SortArrow direction={direction} />
         </button>
       </div>
 
