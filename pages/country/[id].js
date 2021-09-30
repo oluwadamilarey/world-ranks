@@ -7,11 +7,16 @@ const Country = ({ country }) => {
     <Layout title={extractedCountry.name}>
       <div>
         <div className={styles.overview_panel}>
-          <img src={extractedCountry.flag} alt={extractedCountry.name} />
-          <h1>{extractedCountry.name}</h1>
-          <div>{extractedCountry.region}</div>
+          <img
+            src="http://www.all-flags-world.com/country-flag/Nigeria/flag-nigeria-XL.jpg"
+            alt={extractedCountry.name}
+          />
+          <h1 className={styles.overview_name}>{extractedCountry.name}</h1>
+          <div className={styles.overview_region}>
+            {extractedCountry.region}
+          </div>
 
-          <div>
+          <div className={styles.overview_numbers}>
             <div className={styles.overview_population}>
               <div className={styles.overview_value}>
                 {extractedCountry.population}

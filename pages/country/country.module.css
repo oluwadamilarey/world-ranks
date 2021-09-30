@@ -1,0 +1,23 @@
+.overview_panel img {
+  width: 10%;
+}
+
+.overview_panel {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  background-color: var(--background-color-light);
+}
+
+.overview_name {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 0;
+}
+
+.overview_region {
+  text-align: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  text-align: center;
+}
